@@ -1,0 +1,33 @@
+server:
+  port: 8085
+spring:
+  data:
+    mongodb:
+      database: reportes
+      uri: mongodb://localhost:27017/reportes
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, info, metrics, prometheus, loggers, beans, env
+  endpoint:
+    health:
+      show-details: "always"
+      probes:
+        enabled: true
+  info:
+    git:
+      mode: full
+    build:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
+    io.r2dbc: DEBUG
+
+technology-endpoint:
+  base-url: "http://localhost:8080/tech"
+  timeout: "500"
